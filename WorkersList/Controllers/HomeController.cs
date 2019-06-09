@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -31,6 +32,17 @@ namespace WorkersList.Controllers
                 workersContext.SaveChanges();
             }
             return Redirect("Index");
+        }
+        public ActionResult Edit(int id, string name)
+        {
+            var temp = workersContext.Companies.Find(id);
+            temp.Name = name;
+            workersContext.SaveChanges();
+            return Redirect("Index");
+        }
+        public ActionResult EditForm()
+        {
+            return PartialView("EditForm");
         }
     }
 }
