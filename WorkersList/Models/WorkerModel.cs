@@ -6,6 +6,7 @@ namespace WorkersList.Models
 {
     public class WorkerModel
     {
+       List<Company> Companies { get; set; } 
     }
     public class Company
     {

@@ -8,12 +8,19 @@ namespace WorkersList.Controllers
 {
     public class HomeController : Controller
     {
+        Models.WorkersContext workersContext = new Models.WorkersContext();
+        [HttpGet]
         public ActionResult Index()
         {
-            Models.WorkersContext workersContext = new Models.WorkersContext();
-            workersContext.Companies.Add(new Models.Company { Name = "Рога и копыта" });
-            workersContext.SaveChanges();
+            ViewBag.Companies = workersContext.Companies.ToList();
             return View();
+        }
+        [HttpPost]
+        public ActionResult Index(Models.Company company)
+        {
+            workersContext.Companies.Add(company);
+            workersContext.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

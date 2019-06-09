@@ -12,6 +12,8 @@ namespace WorkersList
     {
         protected void Application_Start()
         {
+            Models.WorkersContext workersContext = new Models.WorkersContext();
+            workersContext.Database.Initialize(false);
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
