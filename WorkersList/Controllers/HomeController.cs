@@ -22,5 +22,15 @@ namespace WorkersList.Controllers
             workersContext.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult Delete(int id)
+        {
+            Models.Company company = workersContext.Companies.Find(id);
+            if (company !=null)
+            {
+                workersContext.Companies.Remove(company);
+                workersContext.SaveChanges();
+            }
+            return Redirect("Index");
+        }
     }
 }

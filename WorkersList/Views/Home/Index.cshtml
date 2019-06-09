@@ -2,6 +2,8 @@
     ViewBag.Title = "Home Page";
 }
 @model WorkersList.Models.Company
+<script type="text/javascript" src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="~/Scripts/CompanyScripts.js"></script>
 <div>
     <table class="table table-dark">
         <thead>
@@ -16,20 +18,53 @@
                     <th>
                         @temp.Name
                     </th>
-
+                    <th>
+                        <button class="btn btn-danger" data-whatever="@temp.Id" data-toggle="modal" data-target="#delForm">Удалить</button>
+                    </th>
                 </tr>
             }
         </tbody>
     </table>
     <button class="btn btn-primary" data-toggle="modal" data-target="#addForm">Добавить</button>
     <div class="modal fade" tabindex="-1" id="addForm" role="dialog" aria-hidden="true">
-        @using (Html.BeginForm())
-        {
-            @Html.LabelFor(Model => Model.Name, "Название")
-            <br />
-            @Html.EditorFor(Model => Model.Name)
-            <br />
-            <input type="submit" value="Добавить" />
-        }
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                @using (Html.BeginForm())
+                {
+                    <div class="modal-header">
+                        <div class="modal-title">
+                            <h5>Добавить компанию</h5>
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="nameInput" class="col-form-label">Название</label>
+                                <input id="nameInput" required class="form-control" name="Name" />
+                            </div>
+                            <input type="submit" class="btn btn-success" value="Добавить" />
+                        </div>
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id="delForm">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-title">
+                        <h5> Потвердите удаление</h5>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <button class="btn btn-primary" data-dismiss="modal">Отмена</button>
+                    <a class="btn btn-danger float-right" id="delBtn">Удалить</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
