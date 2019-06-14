@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title = "Сотрудники";
+}
+<script type="text/javascript" src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="~/Scripts/datatables.min.js"></script>
+<div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Имя</th>
+                <th>Описание</th>
+                <th>Комапания</th>
+                <th>Возраст</th>
+                <th>Дата добавления</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>
+
+                </th>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-primary" data-toggle="modal" data-target="#addForm">Добавить</button>
+</div>
+<div class="modal fade" tabindex="-1" id="addForm" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            @using (Html.BeginForm())
+            {
+                <div class="modal-header">
+                    <div class="modal-title">
+                        <h5>Добавить Сотрудника</h5>
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form>
+                    <div class="modal-body container">
+                        <div class="form-group">
+                            <label for="nameInput" class="col-form-label">Имя</label>
+                            <input id="nameInput" required class="form-control" name="Name" />
+                        </div>
+                        <div class="form-group">
+                            <label for="ageInput" class="col-form-label">Возраст</label>
+                            <input id="ageInput" required class="form-control" name="Age" type="number" />
+                        </div>
+                        <div class="form-group">
+                            <label for="companyInput" class="col-form-label">Компания</label>
+                            <select id="companyInput" required class="form-control" name="Company_Id">
+                                @foreach(var temp in ViewBag.CompanyList)
+                                {
+                                    <option value="@temp.Id">@temp.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="companyInput" class="col-form-label">Описание</label>
+                            <textarea id="companyInput" required class="form-control" name="Description"></textarea>
+                        </div>
+                        <input type="submit" class="btn btn-success" value="Добавить" />
+                    </div>
+                </form>
+            }
+        </div>
+    </div>
+</div>
+

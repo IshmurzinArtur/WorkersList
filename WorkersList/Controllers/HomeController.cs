@@ -1,14 +1,9 @@
-﻿using PagedList;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
 
 namespace WorkersList.Controllers
 {
-    public class HomeController : Controller
+    public class CompanyController : Controller
     {
         Models.WorkersContext workersContext = new Models.WorkersContext();
 
