@@ -3,9 +3,10 @@
 }
 @model WorkersList.Models.Company
 <script type="text/javascript" src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="~/Scripts/datatables.min.js"></script>
 <script type="text/javascript" src="~/Scripts/CompanyScripts.js"></script>
 <div>
-    <table class="table table-bordered">
+    <table class="table table-bordered" id="companyTable">
         <thead>
             <tr>
                 <th scope="col" class="col-10">Название</th>

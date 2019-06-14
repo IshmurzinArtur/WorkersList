@@ -1,4 +1,5 @@
 ﻿$(document).ready(function () {
+    $('#companyTable').DataTable({});
     $('#delForm').on('show.bs.modal', function (event) {
         console.log("1");
         var button = $(event.relatedTarget) 

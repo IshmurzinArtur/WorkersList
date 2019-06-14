@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace WorkersList.Controllers
     public class HomeController : Controller
     {
         Models.WorkersContext workersContext = new Models.WorkersContext();
+
         [HttpGet]
         public ActionResult Index()
         {
@@ -39,10 +41,6 @@ namespace WorkersList.Controllers
             temp.Name = name;
             workersContext.SaveChanges();
             return Redirect("Index");
-        }
-        public ActionResult EditForm()
-        {
-            return PartialView("EditForm");
         }
     }
 }
