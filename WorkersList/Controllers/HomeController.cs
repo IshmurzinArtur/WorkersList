@@ -10,8 +10,7 @@ namespace WorkersList.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            ViewBag.Companies = workersContext.Companies.ToList();
-            return View();
+            return View(workersContext.Companies.ToList());
         }
         [HttpPost]
         public ActionResult Index(Models.Company company)
@@ -26,6 +25,10 @@ namespace WorkersList.Controllers
             if (company !=null)
             {
                 workersContext.Companies.Remove(company);
+                var workersForDeleted = from t in workersContext.Workers
+                                    where t.Company.Id == id
+                                    select t;
+                workersContext.Workers.RemoveRange(workersForDeleted);
                 workersContext.SaveChanges();
             }
             return Redirect("Index");

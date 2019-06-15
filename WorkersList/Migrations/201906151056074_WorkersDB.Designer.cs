@@ -7,13 +7,13 @@ namespace WorkersList.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class InitialCreate : IMigrationMetadata
+    public sealed partial class WorkersDB : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(WorkersDB));
         
         string IMigrationMetadata.Id
         {
-            get { return "201906090513144_InitialCreate"; }
+            get { return "201906151056074_WorkersDB"; }
         }
         
         string IMigrationMetadata.Source

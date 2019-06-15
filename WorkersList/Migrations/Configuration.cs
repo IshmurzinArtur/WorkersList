@@ -10,7 +10,6 @@ namespace WorkersList.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "WorkersList.Models.WorkersContext";
         }
 
         protected override void Seed(WorkersList.Models.WorkersContext context)

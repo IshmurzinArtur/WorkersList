@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "Компании";
 }
-@model WorkersList.Models.Company
+@model List<WorkersList.Models.Company>
 <script type="text/javascript" src="~/Scripts/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="~/Scripts/datatables.min.js"></script>
 <script type="text/javascript" src="~/Scripts/CompanyScripts.js"></script>
@@ -15,7 +15,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var temp in ViewBag.Companies)
+            @foreach (var temp in Model)
             {
                 <tr>
                     <th>
@@ -84,7 +84,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form method="post" action="../Home/Edit">
+                <form method="post" action="../Company/Edit">
                     <input name="id" type="hidden" id="editId" />
                     <div class="modal-body">
                         <div class="form-group">

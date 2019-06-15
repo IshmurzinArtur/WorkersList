@@ -3,7 +3,7 @@ namespace WorkersList.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class WorkersDB : DbMigration
     {
         public override void Up()
         {
@@ -21,6 +21,7 @@ namespace WorkersList.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
                         Description = c.String(),
                         Age = c.Int(nullable: false),
                         DateAdded = c.DateTime(nullable: false),

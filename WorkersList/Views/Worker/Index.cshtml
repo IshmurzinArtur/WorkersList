@@ -1,25 +1,50 @@
 ﻿@{
     ViewBag.Title = "Сотрудники";
 }
+@model WorkersList.Models.Worker
 <script type="text/javascript" src="~/Scripts/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="~/Scripts/datatables.min.js"></script>
+<script type="text/javascript" src="~/Scripts/workersScripts.js"></script>
 <div>
-    <table class="table table-bordered">
+    <table class="table table-bordered" id="workersTable">
         <thead>
             <tr>
-                <th>Имя</th>
-                <th>Описание</th>
-                <th>Комапания</th>
-                <th>Возраст</th>
-                <th>Дата добавления</th>
+                <th scope="col">Имя</th>
+                <th scope="col">Описание</th>
+                <th scope="col">Комапания</th>
+                <th scope="col">Возраст</th>
+                <th scope="col">Дата добавления</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
+            @foreach (var temp in ViewBag.WorkersList)
+            {
             <tr>
                 <th>
-
+                    @temp.Name
+                </th>
+                <th>
+                    @temp.Description
+                </th>
+                <th>
+                    @temp.Company.Name
+                </th>
+                <th>
+                    @temp.Age
+                </th>
+                <th>
+                    @temp.DateAdded
+                </th>
+                <th>
+                    <button class="btn btn-danger" data-whatever="@temp.Id" data-toggle="modal" data-target="#delForm">Удалить</button>
+                </th>
+                <th>
+                    <button class="btn btn-success" data-whatever="@temp.Id,@temp.Name,@temp.Description,@temp.Company.Id,@temp.Age" data-toggle="modal" data-target="#editForm">Редактировать</button>
                 </th>
             </tr>
+            }
         </tbody>
     </table>
     <button class="btn btn-primary" data-toggle="modal" data-target="#addForm">Добавить</button>
@@ -64,6 +89,62 @@
                     </div>
                 </form>
             }
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id="delForm">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <h5> Потвердите удаление</h5>
+                </div>
+            </div>
+            <div class="modal-body">
+                <button class="btn btn-primary" data-dismiss="modal">Отмена</button>
+                <a class="btn btn-danger float-right" id="delBtn">Удалить</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" id="editForm" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <h5>Редактировать компанию</h5>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" action="../Worker/Edit">
+                <input name="Id" type="hidden" id="Id" />
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="name" class="col-form-label">Имя</label>
+                        <input id="name" required class="form-control" name="Name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="age" class="col-form-label">Возраст</label>
+                        <input id="age" required class="form-control" name="Age" type="number" />
+                    </div>
+                    <div class="form-group">
+                        <label for="company" class="col-form-label">Компания</label>
+                        <select id="company" required class="form-control" name="Company_Id">
+                            @foreach (var temp in ViewBag.CompanyList)
+                            {
+                                <option value="@temp.Id">@temp.Name</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="description" class="col-form-label">Описание</label>
+                        <textarea id="description" required class="form-control" name="Description"></textarea>
+                    </div>
+                    <button id="editBtn" type="submit" class="btn btn-success">Редактировать</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

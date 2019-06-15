@@ -220,13 +220,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906090513144_InitialCreate.cs" />
-    <Compile Include="Migrations\201906090513144_InitialCreate.Designer.cs">
-      <DependentUpon>201906090513144_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906142156096_WorkersDB.cs" />
-    <Compile Include="Migrations\201906142156096_WorkersDB.Designer.cs">
-      <DependentUpon>201906142156096_WorkersDB.cs</DependentUpon>
+    <Compile Include="Migrations\201906151056074_WorkersDB.cs" />
+    <Compile Include="Migrations\201906151056074_WorkersDB.Designer.cs">
+      <DependentUpon>201906151056074_WorkersDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\WorkerModel.cs" />
@@ -289,6 +285,7 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\workersScripts.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -325,11 +322,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201906090513144_InitialCreate.resx">
-      <DependentUpon>201906090513144_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906142156096_WorkersDB.resx">
-      <DependentUpon>201906142156096_WorkersDB.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906151056074_WorkersDB.resx">
+      <DependentUpon>201906151056074_WorkersDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
