@@ -39,6 +39,7 @@ namespace WorkersList.Controllers
         }
         public ActionResult Edit(Models.Worker worker, int Company_Id)
         {
+            /*Небольшой велосипед лучше использовать EntityState.Modified*/
             var edit = workersContext.Workers.Find(worker.Id);
             edit.Age = worker.Age;
             edit.Company = workersContext.Companies.Find(Company_Id);

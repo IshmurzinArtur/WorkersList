@@ -6,6 +6,7 @@
 <script type="text/javascript" src="~/Scripts/datatables.min.js"></script>
 <script type="text/javascript" src="~/Scripts/CompanyScripts.js"></script>
 <div>
+    <button class="btn btn-primary btn-add" data-toggle="modal" data-target="#addForm">Добавить</button>
     <table class="table table-bordered" id="companyTable">
         <thead class="thead-dark">
             <tr>
@@ -31,7 +32,6 @@
             }
         </tbody>
     </table>
-    <button class="btn btn-primary" data-toggle="modal" data-target="#addForm">Добавить</button>
     <div class="modal fade" tabindex="-1" id="addForm" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
