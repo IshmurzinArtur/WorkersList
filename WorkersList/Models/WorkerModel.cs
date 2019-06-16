@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 
 namespace WorkersList.Models
 {
-    public class WorkerModel
-    {
-       List<Company> Companies { get; set; } 
-    }
     public class Company
     {
         public int Id { get; set; }
