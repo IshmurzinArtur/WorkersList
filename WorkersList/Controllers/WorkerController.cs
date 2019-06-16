@@ -22,7 +22,7 @@ namespace WorkersList.Controllers
         public ActionResult Index(Models.Worker worker, int Company_Id)
         {
             worker.DateAdded = DateTime.Now;
-            worker.Company =workersContext.Companies.Find(Company_Id);
+            worker.Company = workersContext.Companies.Find(Company_Id);
             workersContext.Workers.Add(worker);
             workersContext.SaveChanges();
             return Redirect("Index");
@@ -39,8 +39,11 @@ namespace WorkersList.Controllers
         }
         public ActionResult Edit(Models.Worker worker, int Company_Id)
         {
-            worker.Company = workersContext.Companies.Find(Company_Id);
-            workersContext.Entry(worker).State = EntityState.Modified;
+            var edit = workersContext.Workers.Find(worker.Id);
+            edit.Age = worker.Age;
+            edit.Company = workersContext.Companies.Find(Company_Id);
+            edit.Name = worker.Name;
+            edit.Description = worker.Description;
             workersContext.SaveChanges();
             return Redirect("Index");
         }
